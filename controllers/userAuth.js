@@ -5,7 +5,8 @@ const User = require("../models/user");
 const response = require("../helpers/response");
 
 exports.signup = function (req, res) {
-  const { password, email, full_name } = req.body;
+  const { password, email, full_name, phone } = req.body;
+  console.log(phone);
 
   User.find({ email }, function (err, data) {
     if (data.length || err) {
@@ -16,6 +17,7 @@ exports.signup = function (req, res) {
         password: hashedPassword,
         email,
         full_name,
+        phone,
       });
       librarian.save(function (err, data) {
         if (err) return response.sendBadRequest(res, err);

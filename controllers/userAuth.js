@@ -6,7 +6,6 @@ const response = require("../helpers/response");
 
 exports.signup = function (req, res) {
   const { password, email, full_name, phone } = req.body;
-  console.log(phone);
 
   User.find({ email }, function (err, data) {
     if (data.length || err) {
